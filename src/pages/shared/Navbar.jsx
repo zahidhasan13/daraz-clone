@@ -40,7 +40,7 @@ const Navbar = () => {
               placeholder="Search in Daraz"
               className="w-full focus:outline-none pl-2"
             />
-            <span className="bg-orange-200 px-4 py-1 rounded-xl mr-2">
+            <span className="bg-orange-200 px-4 py-1 rounded mr-1 my-0.5">
               <img src={search} alt="" className="w-6" />
             </span>
           </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
             </div>
             <span>|</span>
             <Link
-              to="/signUp"
+              to="/register"
               className="font-semibold bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg"
             >
               Sign Up
