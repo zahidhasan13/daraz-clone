@@ -1,7 +1,28 @@
+import { useContext } from "react";
 import { FaFacebookF, FaGoogle, } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
+  const {signInUser} = useContext(AuthContext);
+
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signInUser(email, password)
+    .then(result => {
+      const user = result.user;
+      toast("Login successful");
+      form.reset();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
   return (
     <div className="bg-[#EFF0F5] flex justify-center items-center py-10">
       <div className="w-[60%]">
@@ -15,8 +36,9 @@ const Login = () => {
             here.
           </p>
         </div>
+        <Toaster></Toaster>
         <div className="bg-white p-8">
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="grid grid-cols-2">
               <div>
                 <div className="mb-10">

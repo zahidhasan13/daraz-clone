@@ -4,8 +4,11 @@ import search from "../../assets/serach.png";
 import { Link } from "react-router-dom";
 import lng from "../../assets/lng.png";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div className="bg-[#F85606] pb-2">
       <div className="max-w-screen-xl mx-auto space-y-4">
@@ -46,18 +49,23 @@ const Navbar = () => {
           </div>
           <div className="flex items-center space-x-4 text-white">
             <div className="flex items-center space-x-2 bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg">
-              <FaUser></FaUser>
-              <Link to="/login" className="font-semibold">
-                Login
-              </Link>
+              {
+                user ? <Link>{user.displayName}</Link> : <><FaUser></FaUser>
+                <Link to="/login" className="font-semibold">
+                  Login
+                </Link></>
+              }
             </div>
-            <span>|</span>
-            <Link
+            
+            {
+              !user && <><span>|</span><Link
               to="/register"
               className="font-semibold bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg"
             >
               Sign Up
             </Link>
+            </>
+            }
             <div className="flex items-center space-x-2 bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg">
               <img src={lng} alt="" className="w-8" />
               <span className="font-semibold">EN</span>
