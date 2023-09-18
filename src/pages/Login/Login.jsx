@@ -29,7 +29,6 @@ const Login = () => {
                   <input
                     type="email"
                     name="email"
-                    id=""
                     placeholder="Please enter your Email"
                     className="border-2 border-gray-200 p-2 w-full"
                   />
@@ -44,7 +43,6 @@ const Login = () => {
                   <input
                     type="password"
                     name="password"
-                    id=""
                     placeholder="Please enter your password"
                     className="border-2 border-gray-200 p-2 w-full"
                   />

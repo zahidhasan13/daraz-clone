@@ -1,7 +1,29 @@
+import { useContext } from "react";
 import { FaFacebookF, FaGoogle, } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
+  const {createUser} = useContext(AuthContext);
+
+  const handleSignUp = event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+    .then(result => {
+      const user = result.user;
+      toast.success("User created successfully");
+      form.reset();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
     return (
         <div className="bg-[#EFF0F5] flex justify-center items-center py-10">
       <div className="w-[60%]">
@@ -16,7 +38,8 @@ const Register = () => {
           </p>
         </div>
         <div className="bg-white p-8">
-          <form>
+          <Toaster></Toaster>
+          <form onSubmit={handleSignUp}>
             <div className="grid grid-cols-2">
               <div>
                 <div className="mb-10">
@@ -29,7 +52,6 @@ const Register = () => {
                   <input
                     type="name"
                     name="name"
-                    id=""
                     placeholder="Please enter your name"
                     className="border-2 border-gray-200 p-2 w-full"
                   />
@@ -44,7 +66,6 @@ const Register = () => {
                   <input
                     type="email"
                     name="email"
-                    id=""
                     placeholder="Please enter your Email"
                     className="border-2 border-gray-200 p-2 w-full"
                   />
@@ -59,7 +80,6 @@ const Register = () => {
                   <input
                     type="password"
                     name="password"
-                    id=""
                     placeholder="Please enter your password"
                     className="border-2 border-gray-200 p-2 w-full"
                   />

@@ -17,35 +17,35 @@ const Carousel = () => {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autopdlay: true,
+        autoplay: true,
         speed: 1000,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
       };
     return (
             <Slider {...settings}>
           <div>
-            <img src={slider1} alt="" />
+            <img src={slider1} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider2} alt="" />
+          <img src={slider2} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider3} alt="" />
+          <img src={slider3} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider4} alt="" />
+          <img src={slider4} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider5} alt="" />
+          <img src={slider5} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider6} alt="" />
+          <img src={slider6} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider8} alt="" />
+          <img src={slider8} alt="" className="rounded"/>
           </div>
           <div>
-          <img src={slider9} alt="" />
+          <img src={slider9} alt="" className="rounded"/>
           </div>
         </Slider>
     );
