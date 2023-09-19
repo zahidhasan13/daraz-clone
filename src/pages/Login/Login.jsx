@@ -5,7 +5,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
-  const {signInUser} = useContext(AuthContext);
+  const {signInUser, googleSignIn} = useContext(AuthContext);
 
   const handleLogin = event => {
     event.preventDefault();
@@ -18,6 +18,17 @@ const Login = () => {
       const user = result.user;
       toast("Login successful");
       form.reset();
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      const user = result.user;
+      toast("Login successful");
     })
     .catch(err => {
       console.log(err);
@@ -79,7 +90,7 @@ const Login = () => {
                 <button className="bg-[#3B5998] text-white text-xl font-semibold py-2.5 w-full my-4 rounded flex items-center justify-center">
                   <span className="mr-10"><FaFacebookF></FaFacebookF></span>Facebook
                 </button>
-                <button className="bg-[#D34836] text-white text-xl font-semibold py-2.5 w-full rounded flex items-center justify-center">
+                <button className="bg-[#D34836] text-white text-xl font-semibold py-2.5 w-full rounded flex items-center justify-center" onClick={handleGoogleSignIn}>
                   <span className="mr-10"><FaGoogle></FaGoogle></span>Google 
                 </button>
               </div>

@@ -1,4 +1,4 @@
-import Carousel from "../../components/Carousel/slider";
+import Carousel from "./Carousel/slider";
 import ad from "../../assets/ad.png";
 import dress from "../../assets/icons/dress.png";
 import beauty from "../../assets/icons/lipstick.png";
@@ -22,6 +22,7 @@ import electronics from "../../assets/electronic.png";
 import budget from "../../assets/budget.png";
 import best from "../../assets/best.png";
 import mens from "../../assets/men.png";
+import FlashSale from "./FlashSale/FlashSale";
 
 const Home = () => {
   return (
@@ -176,6 +177,9 @@ const Home = () => {
             <img src={mens} alt="" className="w-24"/>
             <p>Men's Fashion</p>
           </div>
+        </div>
+        <div>
+          <FlashSale></FlashSale>
         </div>
       </div>
     </div>
