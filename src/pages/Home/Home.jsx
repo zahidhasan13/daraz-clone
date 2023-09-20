@@ -23,6 +23,7 @@ import budget from "../../assets/budget.png";
 import best from "../../assets/best.png";
 import mens from "../../assets/men.png";
 import FlashSale from "./FlashSale/FlashSale";
+import JustForYou from "./JustForYou/JustForYou";
 
 const Home = () => {
   return (
@@ -180,6 +181,7 @@ const Home = () => {
         </div>
         <div>
           <FlashSale></FlashSale>
+          <JustForYou></JustForYou>
         </div>
       </div>
     </div>
