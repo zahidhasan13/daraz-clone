@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const FlashSale = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data.products));
+      .then((data) => setProducts(data));
   }, []);
 
   function addLeadingZero(number) {
@@ -79,18 +80,15 @@ const FlashSale = () => {
           </button>
         </div>
         <hr />
-        <div className="pt-4 flex justify-between gap-4">
-          {products.slice(0, 6).map((product) => (
-            <div key={product.id} className="hover:shadow-md">
-              <img src={product.thumbnail} alt="" className="h-32" />
+        <div className="pt-4 grid grid-cols-6 gap-4">
+          {products.slice(14, 20).map((product) => (
+            <Link to={`/productDetails/${product.id}`} key={product.id} className="hover:shadow-md">
+              <img src={product.image} alt="" className="h-32 mx-auto" />
               <h3 className="text-xl px-2">{product.title}</h3>
               <div className="px-2">
                 <p className="text-xl text-[#F85606]">${product.price}</p>
-                <p>
-                  <s>${product.price + product.discountPercentage}</s>
-                </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

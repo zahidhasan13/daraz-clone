@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -12,6 +13,11 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home></Home>
+        },
+        {
+          path: "/productDetails/:id",
+          element: <ProductDetails></ProductDetails>,
+          loader: ({params}) => fetch(`https://fakestoreapi.com/products/${params.id}`)
         },
         {
           path: "login",

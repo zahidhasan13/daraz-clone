@@ -24,10 +24,11 @@ const JustForYou = () => {
           ))}
         </div>
         <div className="text-center">
-        <button className="text-[#F85606] border-2 border-[#F85606] py-2.5 px-32 uppercase">
+        <button className="text-[#F85606] border-2 border-[#F85606] py-2.5 px-32 uppercase mb-4">
             load more
           </button>
         </div>
+        <hr />
         </div>
     );
 };
