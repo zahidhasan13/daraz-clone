@@ -4,6 +4,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/productDetails/:id",
-          element: <ProductDetails></ProductDetails>,
+          element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
           loader: ({params}) => fetch(`https://fakestoreapi.com/products/${params.id}`)
         },
         {

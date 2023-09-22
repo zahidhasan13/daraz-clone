@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { FaFacebookF, FaGoogle, } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const {signInUser, googleSignIn} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleLogin = event => {
     event.preventDefault();
@@ -16,11 +20,12 @@ const Login = () => {
     signInUser(email, password)
     .then(result => {
       const user = result.user;
-      toast("Login successful");
+      toast.success("Login successful");
       form.reset();
+      navigate(from, { replace: true });
     })
     .catch(err => {
-      console.log(err);
+      toast.error("Login Failed");
     })
   }
 
@@ -28,10 +33,11 @@ const Login = () => {
     googleSignIn()
     .then(result => {
       const user = result.user;
-      toast("Login successful");
+      toast.success("Login successful");
+      navigate(from, { replace: true });
     })
     .catch(err => {
-      console.log(err);
+      toast.error("Login Failed");
     })
   }
   return (
