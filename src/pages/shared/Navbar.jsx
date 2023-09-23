@@ -86,7 +86,7 @@ const Navbar = () => {
               <span className="font-semibold">EN</span>
             </div>
             <div className="text-3xl bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg">
-              <Link to="/">
+              <Link to="/cart">
                 <FaShoppingCart></FaShoppingCart>
               </Link>
             </div>
