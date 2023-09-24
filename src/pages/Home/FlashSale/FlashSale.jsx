@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../provider/ProductProvider";
 
 const FlashSale = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const { products } = useContext(ProductContext);
 
   function addLeadingZero(number) {
     return number < 10 ? `0${number}` : number.toString();
@@ -82,7 +77,11 @@ const FlashSale = () => {
         <hr />
         <div className="pt-4 grid grid-cols-6 gap-4">
           {products.slice(14, 20).map((product) => (
-            <Link to={`/productDetails/${product.id}`} key={product.id} className="hover:shadow-md">
+            <Link
+              to={`/productDetails/${product.id}`}
+              key={product.id}
+              className="hover:shadow-md"
+            >
               <img src={product.image} alt="" className="h-32 mx-auto" />
               <h3 className="text-xl px-2">{product.title}</h3>
               <div className="px-2">

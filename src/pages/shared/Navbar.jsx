@@ -6,9 +6,16 @@ import lng from "../../assets/lng.png";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ProductContext } from "../../provider/ProductProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const {cart} = useContext(ProductContext);
+  let quantity = 0;
+  for(const product of cart){
+    product.quantity = product.quantity || 1;
+    quantity = quantity + product.quantity;
+}
 
   const handleLogOut = () => {
     logOut()
@@ -88,6 +95,7 @@ const Navbar = () => {
             <div className="text-3xl bg-transparent p-2 hover:bg-[rgba(0,0,0,0.1)] hover:p-2 hover:rounded-lg">
               <Link to="/cart">
                 <FaShoppingCart></FaShoppingCart>
+                <span>{quantity}</span>
               </Link>
             </div>
           </div>

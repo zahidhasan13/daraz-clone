@@ -1,15 +1,10 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../provider/ProductProvider";
 
 const JustForYou = () => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-      fetch("https://fakestoreapi.com/products")
-        .then((res) => res.json())
-        .then((data) => setProducts(data));
-    }, []);
+    const {products} = useContext(ProductContext);
     return (
         <div>
             <h3 className="text-3xl text-gray-500">Just For You</h3>

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import { ProductContext } from "../../provider/ProductProvider";
 
 const ProductDetails = () => {
   const product = useLoaderData();
   const [quantity, setQuantity] = useState(1);
+  const {handleCartProducts} = useContext(ProductContext);
 
   const handleQuantityMinus=() => {
     if(quantity===1){
@@ -52,7 +54,7 @@ const ProductDetails = () => {
               <button className="text-lg px-16 py-2.5 bg-[#2ABBE8]">
                 Buy Now
               </button>
-              <button className="text-lg px-16 py-2.5 bg-[#F57224]">
+              <button onClick={() => {handleCartProducts(product)}} className="text-lg px-16 py-2.5 bg-[#F57224]">
                 Add to Cart
               </button>
             </div>
